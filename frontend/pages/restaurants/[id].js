@@ -1,3 +1,4 @@
+import DishCard from '@/components/DishCard'
 import { gql, useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -37,11 +38,11 @@ function Restaurant() {
     return (
       <>
         <h1>{restaurant.data.attributes.name}</h1>
-        <ul>
+        <div className='row'>
           {dishes.map((dish) => {
-            return <li key={dish.id}>{dish.attributes.name}</li>
+            return <DishCard data={dish} key={dish.id} />
           })}
-        </ul>
+        </div>
       </>
     )
   } else {

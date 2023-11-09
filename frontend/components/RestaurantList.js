@@ -37,8 +37,14 @@ function RestaurantList(props) {
           {searchQuery.map((res) => {
             return (
               <div key={res.id} className='card col-4'>
-                <h2 className='card-title'>{res.attributes.name}</h2>
-                <button>Do Something</button>
+                <div className='card-body'>
+                  <h2 className='card-title'>{res.attributes.name}</h2>
+                  <ul className='d-flex justify-content-between'>
+                    <li>Star Rating</li>
+                    <li>Price Point</li>
+                  </ul>
+                  <a href={`/restaurants/${res.id}`}>Go to Restaurant</a>
+                </div>
               </div>
             )
           })}
