@@ -693,7 +693,7 @@ export interface ApiDishDish extends Schema.CollectionType {
     price: Attribute.Decimal;
     restaurant: Attribute.Relation<
       'api::dish.dish',
-      'oneToOne',
+      'manyToOne',
       'api::restaurant.restaurant'
     >;
     createdAt: Attribute.DateTime;
@@ -757,7 +757,7 @@ export interface ApiRestaurantRestaurant extends Schema.CollectionType {
     name: Attribute.String;
     dishes: Attribute.Relation<
       'api::restaurant.restaurant',
-      'oneToOne',
+      'oneToMany',
       'api::dish.dish'
     >;
     createdAt: Attribute.DateTime;

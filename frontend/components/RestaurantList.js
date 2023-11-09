@@ -26,7 +26,9 @@ function RestaurantList(props) {
 
   if (data.restaurants.data && data.restaurants.data.length) {
     const searchQuery = data.restaurants.data.filter((query) => {
-      query.attributes.name.toLowerCase().includes(props.query.toLowerCase())
+      return query.attributes.name
+        .toLowerCase()
+        .includes(props.query.toLowerCase())
     })
 
     if (searchQuery.length > 0) {
@@ -36,6 +38,7 @@ function RestaurantList(props) {
             return (
               <div key={res.id} className='card col-4'>
                 <h2 className='card-title'>{res.attributes.name}</h2>
+                <button>Do Something</button>
               </div>
             )
           })}
@@ -45,8 +48,6 @@ function RestaurantList(props) {
       return <p>No Restaurants Found</p>
     }
   }
-
-  return <h2>Restaurant List</h2>
 }
 
 export default RestaurantList

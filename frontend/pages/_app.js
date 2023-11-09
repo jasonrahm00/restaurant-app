@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import '@/styles/globals.css'
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 
-const API_URL = process.env.STRAPI_URL || 'http://127.0.0.1:1337'
+const API_URL = process.env.STRAPI_URL || 'http://localhost:1337'
 
 export const client = new ApolloClient({
   uri: `${API_URL}/graphql`,

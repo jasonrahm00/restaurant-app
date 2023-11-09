@@ -17,8 +17,9 @@
     },
     "dishes": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::dish.dish"
+      "relation": "oneToMany",
+      "target": "api::dish.dish",
+      "mappedBy": "restaurant"
     }
   }
 }
