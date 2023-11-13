@@ -9,22 +9,29 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
+  "devDependencies": {},
   "dependencies": {
-    "@strapi/plugin-graphql": "^4.15.2",
-    "@strapi/plugin-i18n": "4.15.0",
-    "@strapi/plugin-users-permissions": "4.15.0",
-    "@strapi/strapi": "4.15.0",
-    "better-sqlite3": "8.6.0"
+    "strapi": "3.6.11",
+    "strapi-admin": "3.6.11",
+    "strapi-connector-mongoose": "3.6.11",
+    "strapi-plugin-content-manager": "3.6.11",
+    "strapi-plugin-content-type-builder": "3.6.11",
+    "strapi-plugin-email": "3.6.11",
+    "strapi-plugin-graphql": "^3.6.11",
+    "strapi-plugin-i18n": "3.6.11",
+    "strapi-plugin-upload": "3.6.11",
+    "strapi-plugin-users-permissions": "3.6.11",
+    "strapi-utils": "3.6.11"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "2bf9a927-434a-4471-b159-292fe62537a8"
+    "uuid": "e1dde10f-c5ea-4fb5-886d-8d8cbd6c86ab"
   },
   "engines": {
-    "node": ">=18.0.0 <=20.x.x",
-    "npm": ">=6.0.0"
+    "node": ">=10.16.0 <=14.x.x",
+    "npm": "^6.0.0"
   },
   "license": "MIT"
 }
