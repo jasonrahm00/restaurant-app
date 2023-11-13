@@ -33,10 +33,6 @@ function RestaurantList(props) {
               <div key={res.id} className='card col-4'>
                 <div className='card-body'>
                   <h2 className='card-title'>{res.name}</h2>
-                  <ul className='d-flex justify-content-between'>
-                    <li>Star Rating</li>
-                    <li>Price Point</li>
-                  </ul>
                   <a href={`/restaurants/${res.id}`}>Go to Restaurant</a>
                 </div>
               </div>

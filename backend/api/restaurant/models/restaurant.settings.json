@@ -39,6 +39,24 @@
     },
     "price_point": {
       "type": "integer"
+    },
+    "street_address": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "zip": {
+      "type": "string"
+    },
+    "open": {
+      "type": "time"
+    },
+    "close": {
+      "type": "time"
     }
   }
 }
