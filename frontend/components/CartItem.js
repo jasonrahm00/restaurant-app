@@ -3,19 +3,19 @@ import { useAppContext } from './AppContext'
 
 function CartItem({ data }) {
   const { addItem, removeItem } = useAppContext()
-  const { quantity, attributes } = data
+  const { quantity, name, price } = data
 
   return (
     <section>
-      <h3>{attributes.name}</h3>
+      <h3>{name}</h3>
       <span>
-        {quantity} x {attributes.price}
+        {quantity} x {price}
       </span>
       <div className='d-flex justify-content-between'>
         <button onClick={() => removeItem(data)}>Remove One</button>
         <button onClick={() => addItem(data)}>Add One</button>
       </div>
-      <span>{attributes.price * quantity}</span>
+      <span>{price * quantity}</span>
     </section>
   )
 }

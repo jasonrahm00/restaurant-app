@@ -11,8 +11,8 @@ function DishCard({ data }) {
 
   return (
     <section className='card col-3'>
-      <h2 className='card-title'>{data.attributes.name}</h2>
-      <p>${data.attributes.price}</p>
+      <h2 className='card-title'>{data.name}</h2>
+      <p>${data.price}</p>
       <button onClick={handleAddItem}>Add to Cart</button>
     </section>
   )

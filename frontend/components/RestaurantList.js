@@ -4,12 +4,8 @@ import React from 'react'
 const QUERY = gql`
   {
     restaurants {
-      data {
-        id
-        attributes {
-          name
-        }
-      }
+      id
+      name
     }
   }
 `
@@ -24,11 +20,9 @@ function RestaurantList(props) {
 
   if (loading) return <p>Loading</p>
 
-  if (data.restaurants.data && data.restaurants.data.length) {
-    const searchQuery = data.restaurants.data.filter((query) => {
-      return query.attributes.name
-        .toLowerCase()
-        .includes(props.query.toLowerCase())
+  if (data.restaurants && data.restaurants.length) {
+    const searchQuery = data.restaurants.filter((query) => {
+      return query.name.toLowerCase().includes(props.query.toLowerCase())
     })
 
     if (searchQuery.length > 0) {
@@ -38,7 +32,7 @@ function RestaurantList(props) {
             return (
               <div key={res.id} className='card col-4'>
                 <div className='card-body'>
-                  <h2 className='card-title'>{res.attributes.name}</h2>
+                  <h2 className='card-title'>{res.name}</h2>
                   <ul className='d-flex justify-content-between'>
                     <li>Star Rating</li>
                     <li>Price Point</li>

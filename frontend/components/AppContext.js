@@ -61,15 +61,15 @@ export const AppProvider = ({ children }) => {
       const newItem = { quantity: 1, ...item }
       setCart((prevCart) => ({
         items: [...prevCart.items, newItem],
-        total: prevCart.total + item.attributes.price,
+        total: prevCart.total + item.price,
       }))
     } else {
       // update cart if already exists
-      setCart(() => ({
+      setCart((prevCart) => ({
         items: prevCart.items.map((i) => {
           return i.id === newItem.id ? { ...i, quantity: i.quantity + 1 } : i
         }),
-        total: prevCart.total + item.attributes.price,
+        total: prevCart.total + item.price,
       }))
     }
   }
@@ -85,13 +85,13 @@ export const AppProvider = ({ children }) => {
         items: prevCart.items.map((i) => {
           return i.id === newItem.id ? { ...i, quantity: i.quantity - 1 } : i
         }),
-        total: (prevCart.total = item.attributes.price),
+        total: (prevCart.total = item.price),
       }))
     } else {
       // otherwise remove item completely
       setCart((prevCart) => ({
         items: prevCart.items.filter((i) => i.id !== item.id),
-        total: prevCart.total - item.attributes.price,
+        total: prevCart.total - item.price,
       }))
     }
   }

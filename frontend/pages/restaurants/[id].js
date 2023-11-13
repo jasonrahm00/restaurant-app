@@ -6,19 +6,15 @@ import React from 'react'
 const GET_RESTAURANT_DISHES = gql`
   query ($id: ID!) {
     restaurant(id: $id) {
-      data {
+      id
+      name
+      description
+      dishes {
         id
-        attributes {
-          name
-          dishes {
-            data {
-              id
-              attributes {
-                name
-                price
-              }
-            }
-          }
+        name
+        price
+        image {
+          url
         }
       }
     }
@@ -32,12 +28,12 @@ function Restaurant() {
   })
   if (error) return 'Error loading dishes'
   if (loading) return 'Loading'
-  if (data.restaurant.data.attributes.dishes.data.length) {
+  if (data.restaurant.dishes.length) {
     const { restaurant } = data
-    const [...dishes] = data.restaurant.data.attributes.dishes.data
+    const [...dishes] = data.restaurant.dishes
     return (
       <>
-        <h1>{restaurant.data.attributes.name}</h1>
+        <h1>{restaurant.name}</h1>
         <div className='row'>
           {dishes.map((dish) => {
             return <DishCard data={dish} key={dish.id} />
