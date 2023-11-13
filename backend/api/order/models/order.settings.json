@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "orders",
   "info": {
-    "name": "Order"
+    "name": "Order",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -32,8 +33,10 @@
     "charge_id": {
       "type": "string"
     },
-    "user": {
-      "type": "string"
+    "users_permissions_user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "orders"
     }
   }
 }
