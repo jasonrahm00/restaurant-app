@@ -1,7 +1,5 @@
 "use strict";
-const stripe = require("stripe")(
-  "sk_test_51OBlYLAKYJ4RdA10U3UaoraVvFF9eXg7qFRNPyEXOSITWJQDnVco9EThVXySin1rGfYwldQuF74HKaI6CdVeJQ7900O5VeeXGS"
-);
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 module.exports = {
   /**
