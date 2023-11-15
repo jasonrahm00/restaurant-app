@@ -5,6 +5,8 @@ import { client } from '@/pages/_app'
 
 const AppContext = createContext()
 
+const imageRoot = 'http://127.0.0.1:1337'
+
 const getUser = async () => {
   const token = Cookies.get('token')
   if (!token) return null
@@ -113,6 +115,7 @@ export const AppProvider = ({ children }) => {
         resetCart,
         showCart,
         setShowCart,
+        imageRoot,
       }}
     >
       {children}
