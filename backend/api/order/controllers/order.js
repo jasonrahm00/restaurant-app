@@ -9,9 +9,12 @@ module.exports = {
    */
 
   create: async (ctx) => {
+    console.log(ctx.request.body);
+
     const { address, amount, dishes, token, city, state } = JSON.parse(
       ctx.request.body
     );
+
     const stripeAmount = Math.floor(amount * 100);
     // charge on stripe
     const charge = await stripe.charges.create({
