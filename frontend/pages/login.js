@@ -6,6 +6,8 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL
+
 const LOGIN_MUTATION = gql`
   mutation Login($identifier: String!, $password: String!) {
     login(input: { identifier: $identifier, password: $password }) {
@@ -42,13 +44,24 @@ function Login() {
       <Head>
         <title>Login</title>
       </Head>
-      <Form
-        title='Login'
-        formData={formData}
-        setFormData={setFormData}
-        callback={handleLogin}
-        error={error}
-      />
+      <div className='row'>
+        <h1>Sign In</h1>
+        <div className='col-6'>
+          <Form
+            title='Login with Email and Password'
+            formData={formData}
+            setFormData={setFormData}
+            callback={handleLogin}
+            error={error}
+          />
+        </div>
+        <div className='col-6'>
+          <h2>Login with Google</h2>
+          <a href={`${backendUrl}/connect/google`} className='btn btn-primary'>
+            Login with Google
+          </a>
+        </div>
+      </div>
     </>
   )
 }

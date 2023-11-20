@@ -4,28 +4,7 @@ import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import React from 'react'
 
-/**
- * 
- *
-mutation CreateOrder {
-  createOrder(input: {data: {
-    address: "123 Street",
-    amount: 120,
-    dishes: {},
-    token: "12345",
-    city:"City",
-    state: "CO",
-    charge_id: "123454"
-  }})
-  {
-    order {
-      address
-    }
-  }
-}
- */
-const stripePublicKey =
-  'pk_test_51OBlYLAKYJ4RdA10b1tsrszMKc18QbnOoaoQjURutO55wmAh87z8pBo4HhjxlUcrAK8zmhIqenZDNOphNuVI21R000y6yXcfeK'
+const stripePublicKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 const stripePromise = loadStripe(stripePublicKey)
 
 function Checkout() {

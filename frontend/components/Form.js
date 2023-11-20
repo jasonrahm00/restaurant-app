@@ -3,7 +3,7 @@ import React from 'react'
 function Form({ title, formData, setFormData, callback, error }) {
   return (
     <>
-      <h1>{title}</h1>
+      <h2>{title}</h2>
       <form onSubmit={callback}>
         <div className='form-group'>
           <label htmlFor='email'>Email</label>

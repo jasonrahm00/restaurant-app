@@ -7,21 +7,6 @@ import { client } from '@/pages/_app'
 import { gql } from '@apollo/client'
 import Cookies from 'js-cookie'
 
-const cardStyleOptions = {
-  style: {
-    base: {
-      fontSize: '32px',
-      color: '#52a635',
-      '::placeholder': {
-        color: '#aab7c4',
-      },
-    },
-    invalid: {
-      color: '#9e2521',
-    },
-  },
-}
-
 const INITIAL_STATE = {
   address: '',
   city: '',
@@ -29,7 +14,7 @@ const INITIAL_STATE = {
   error: null,
 }
 
-const API_URL = 'http://localhost:1337'
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL
 
 function CheckoutForm() {
   const [data, setData] = useState(INITIAL_STATE)
@@ -75,7 +60,7 @@ function CheckoutForm() {
 
     const userToken = Cookies.get('token')
 
-    const response = await fetch(`${API_URL}/orders`, {
+    const response = await fetch(`${backendUrl}/orders`, {
       method: 'POST',
       headers: userToken && { Authorization: `Bearer ${userToken}` },
       body: JSON.stringify({
@@ -92,64 +77,9 @@ function CheckoutForm() {
       setData({ ...data, error: { message: 'Unable to complete order' } })
       console.log(response)
     } else {
-      alert('Order Completed')
+      resetCart()
+      router.push('/confirmation')
     }
-
-    // try {
-    //   setLoading(true)
-    //   const { data: response } = await client.mutate({
-    //     mutation: gql`
-    //       mutation CreateOrder(
-    //         $address: String
-    //         $amount: Int
-    //         $dishes: JSON
-    //         $token: String
-    //         $city: String
-    //         $state: String
-    //       ) {
-    //         createOrder(
-    //           input: {
-    //             data: {
-    //               address: $address
-    //               amount: $amount
-    //               dishes: $dishes
-    //               token: $token
-    //               city: $city
-    //               state: $state
-    //             }
-    //           }
-    //         ) {
-    //           order {
-    //             id
-    //           }
-    //         }
-    //       }
-    //     `,
-    //     variables: {
-    //       address: data.address,
-    //       amount: cart.total,
-    //       dishes: cart.items,
-    //       token: token.token.id,
-    //       city: data.city,
-    //       state: data.state,
-    //     },
-    //     context: {
-    //       headers: {
-    //         Authorization: `Bearer ${jwt}`,
-    //       },
-    //     },
-    //   })
-    //   console.log(response)
-    //   if (response.createOrder.order) {
-    //     alert(
-    //       `Transaction successful. Here is your order id: ${response.createOrder._id}`
-    //     )
-    //   }
-    // } catch (error) {
-    //   setData({ ...data, error: { message: error.message } })
-    // } finally {
-    //   setLoading(false)
-    // }
   }
 
   return (
@@ -197,7 +127,7 @@ function CheckoutForm() {
         <div className='p-6'>
           <div>Credit or Debit Card</div>
           <div className='my-4'>
-            <CardElement options={cardStyleOptions} />
+            <CardElement />
           </div>
           <button
             onClick={(e) => (user ? submitOrder(e) : router.push('/login'))}
